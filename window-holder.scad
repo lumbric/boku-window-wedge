@@ -13,6 +13,9 @@ DISTANCE_TO_CENTER1 = (WIDTH - WEDGE_WIDTH1) / 2.;
 TEXT_DEPTH = 3;
 FONT_SIZE = 10;
 
+// distance between the two parts for printing at the same time
+DISTANCE = 5;
+
 /* * * * * * * * * * * * */
 
 
@@ -24,18 +27,20 @@ window_holder(is_left=false);
 
 
 module window_holder(is_left) {
-    mirror_if_left(is_left)
-        translate([0., 10., 0.])
-            difference() {
-                union() {
-                    cube([WIDTH, DEPTH1, HEIGHT]);
+    sign = is_left ? -1: 1;
+    rotate([sign * 90, 0, 0])
+        mirror_if_left(is_left)
+            translate([sign * (WIDTH/2. + DISTANCE) - WIDTH/2., 0., -HEIGHT/2.])
+                difference() {
+                    union() {
+                        cube([WIDTH, DEPTH1, HEIGHT]);
 
-                    translate([DISTANCE_TO_CENTER1, DEPTH1, HEIGHT - WEDGE_HEIGHT])
-                        prisma_trapez(WEDGE_WIDTH1, WEDGE_WIDTH2, WEDGE_DEPTH, WEDGE_HEIGHT);
+                        translate([DISTANCE_TO_CENTER1, DEPTH1, HEIGHT - WEDGE_HEIGHT])
+                            prisma_trapez(WEDGE_WIDTH1, WEDGE_WIDTH2, WEDGE_DEPTH, WEDGE_HEIGHT);
+                    }
+
+                    letter(is_left);
                 }
-
-                letter(is_left);
-            }
 }
 
 module mirror_if_left(is_left) {
