@@ -1,12 +1,18 @@
+// all values in mm
+
 WIDTH = 44;
-HEIGHT = 90;
+HEIGHT = 45;
 DEPTH1 = 15;
 
 WEDGE_WIDTH1 = 23;
-WEDGE_WIDTH2 = 19;
+WEDGE_WIDTH2 = 20;
 WEDGE_DEPTH =  33;
 
-WEDGE_HEIGHT = 65;
+WEDGE_HEIGHT = 30;
+
+SHACKLE_DEPTH = 7;
+SHACKLE_GAP = 17;
+SHACKLE_HEIGHT = 15;
 
 DISTANCE_TO_CENTER1 = (WIDTH - WEDGE_WIDTH1) / 2.;
 
@@ -28,9 +34,9 @@ window_holder(is_left=false);
 
 module window_holder(is_left) {
     sign = is_left ? -1: 1;
-    rotate([sign * 90, 0, 0])
-        mirror_if_left(is_left)
-            translate([sign * (WIDTH/2. + DISTANCE) - WIDTH/2., 0., -HEIGHT/2.])
+    translate([WIDTH/2., sign * DISTANCE, HEIGHT])
+        rotate([180, 0, 180])
+            mirror_if_left(is_left)
                 difference() {
                     union() {
                         cube([WIDTH, DEPTH1, HEIGHT]);
@@ -40,6 +46,9 @@ module window_holder(is_left) {
                     }
 
                     letter(is_left);
+
+                    translate([0., DEPTH1 + WEDGE_DEPTH - SHACKLE_GAP - SHACKLE_DEPTH, HEIGHT - WEDGE_HEIGHT - SHACKLE_HEIGHT])
+                        cube([WIDTH, SHACKLE_GAP, 2 * SHACKLE_HEIGHT]);
                 }
 }
 
