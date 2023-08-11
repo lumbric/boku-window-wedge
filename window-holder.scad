@@ -1,3 +1,12 @@
+/*
+ * Window holder
+ *
+ * This is a wedge to keep the BOKU windows in the Guttenberghaus open. It is very likely that it
+ * fits well also for other windows.
+ */
+
+
+/* * * * *  Configuration  * * * * * */
 // all values in mm
 
 HEIGHT = 45;
