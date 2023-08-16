@@ -14,10 +14,14 @@ DEPTH1 = 15;
 
 // few from top, where the letters L/R are:
 // width is in the writing direction of letters L/R
-WIDTH1 = 10.5;              // distance from left edge to wedge
-WIDTH2 = 10.5;              // distance from wedge to right edge
-WEDGE_WIDTH = 20;           // width of top of wedge
-WEDGE_WIDTH_SLOPE1 = 1.5;   // left width of slope
+// a1, a2, a3 are adjustment variables after the first design
+a1 = 1.6;
+a2 = 0.8;
+a3 = 6;
+WIDTH1 = 10.5 + a1;              // distance from left edge to wedge
+WIDTH2 = 10.5 + a3;              // distance from wedge to right edge
+WEDGE_WIDTH = 20 + a2;           // width of top of wedge
+WEDGE_WIDTH_SLOPE1 = 1.5 - a2;   // left width of slope
 WEDGE_WIDTH_SLOPE2 = 1.5;   // right width of slope
 
 WEDGE_DEPTH =  33;
