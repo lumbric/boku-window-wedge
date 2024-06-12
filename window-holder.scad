@@ -12,17 +12,30 @@
 HEIGHT = 45;
 DEPTH1 = 15;
 
+//// Values for right!
+//// few from top, where the letters L/R are:
+//// width is in the writing direction of letters L/R
+//WIDTH1 = 13;                    // distance from left edge to wedge
+//WIDTH2 = 16;                    // distance from wedge to right edge
+//WEDGE_WIDTH = 20.2;             // width of top of wedge
+//WEDGE_WIDTH_SLOPE1 = 0.1;       // left width of slope
+//WEDGE_WIDTH_SLOPE2 = 0.1;       // right width of slope
+//
+//// if you want to show only one side for debugging, use "l" or "r" or any other value
+//ONLY = "r";
+
+// Values for left!
 // few from top, where the letters L/R are:
 // width is in the writing direction of letters L/R
-// a1, a2, a3 are adjustment variables after the first design
-a1 = 1.6;
-a2 = 0.8;
-a3 = 6;
-WIDTH1 = 10.5 + a1;              // distance from left edge to wedge
-WIDTH2 = 10.5 + a3;              // distance from wedge to right edge
-WEDGE_WIDTH = 20 + a2;           // width of top of wedge
-WEDGE_WIDTH_SLOPE1 = 1.5 - a2;   // left width of slope
-WEDGE_WIDTH_SLOPE2 = 1.5;   // right width of slope
+WIDTH1 = 16;                  // distance from left edge to wedge
+WIDTH2 = 12;                    // distance from wedge to right edge
+WEDGE_WIDTH = 23.0;             // width of top of wedge
+WEDGE_WIDTH_SLOPE1 = 1;       // left width of slope
+WEDGE_WIDTH_SLOPE2 = 1;       // right width of slope
+
+// if you want to show only one side for debugging, use "l" or "r" or any other value
+ONLY = "l";
+
 
 WEDGE_DEPTH =  33;
 
@@ -38,8 +51,6 @@ FONT_SIZE = 10;
 // distance between the two parts for printing at the same time
 DISTANCE = 5;
 
-// if you want to show only one side for debugging, use "l" or "r" or any other value
-ONLY = "l";
 
 /* * * * * * * * * * * * */
 
@@ -107,7 +118,8 @@ module logo(is_left) {
         translate([sign*(width/2) - LOGO_WIDTH/2., -0.1, HEIGHT/2-LOGO_HEIGHT/2.])
             rotate([90, 0, 0])
                 linear_extrude(TEXT_DEPTH)
-                    import(file = "window-wegde-boku-logo.svg", center = false, dpi = 96);
+                    offset(delta=0.001)
+                        import(file = "window-wegde-boku-logo.svg", center = false, dpi = 196);
 }
 
 
