@@ -38,6 +38,9 @@ FONT_SIZE = 10;
 // distance between the two parts for printing at the same time
 DISTANCE = 5;
 
+// if you want to show only one side for debugging, use "l" or "r" or any other value
+ONLY = "l";
+
 /* * * * * * * * * * * * */
 
 
@@ -45,9 +48,11 @@ DISTANCE = 5;
 width = WIDTH1 + WEDGE_WIDTH_SLOPE1 + WEDGE_WIDTH + WEDGE_WIDTH_SLOPE2 + WIDTH2;
 
 
-window_holder(is_left=true);
+if (ONLY != "r")
+    window_holder(is_left=true);
 
-window_holder(is_left=false);
+if (ONLY != "l")
+    window_holder(is_left=false);
 
 
 
@@ -60,6 +65,8 @@ module window_holder(is_left) {
                     union() {
                         cube([width, DEPTH1, HEIGHT]);
 
+                        logo(is_left);
+
                         translate([WIDTH2, DEPTH1, HEIGHT - WEDGE_HEIGHT])
                             prisma_trapez(WEDGE_WIDTH_SLOPE1, WEDGE_WIDTH_SLOPE2, WEDGE_WIDTH, WEDGE_DEPTH, WEDGE_HEIGHT);
                     }
@@ -71,9 +78,9 @@ module window_holder(is_left) {
                 }
 }
 
-module mirror_if_left(is_left) {
-    if(is_left)
-        mirror([0., 1., 0.])
+module mirror_if_left(is_left, axis=[0., 1., 0.]) {
+    if (is_left)
+        mirror(axis)
             children();
     else
         children();
@@ -88,6 +95,19 @@ module letter(is_left=true) {
             mirror_if_left(is_left)  // stupid workaround to mirror back the letter again
                 rotate([0., 0., flip_it])
                     text(lr_letter, FONT_SIZE, "Arial", valign="center", halign="center");
+}
+
+module logo(is_left) {
+    LOGO_WIDTH = 35;  // not sure if we could retreive the width from the svg file
+    LOGO_HEIGHT = 20.841;  // not sure if we could retreive the height from the svg file
+
+    sign = is_left ? -1: 1;
+
+    mirror_if_left(is_left, axis=[1., 0., 0.])
+        translate([sign*(width/2) - LOGO_WIDTH/2., -0.1, HEIGHT/2-LOGO_HEIGHT/2.])
+            rotate([90, 0, 0])
+                linear_extrude(TEXT_DEPTH)
+                    import(file = "window-wegde-boku-logo.svg", center = false, dpi = 96);
 }
 
 
