@@ -38,6 +38,10 @@ FONT_SIZE = 10;
 // distance between the two parts for printing at the same time
 DISTANCE = 5;
 
+COLOR_MAIN = [230./255., 100./255, 30./255.];
+COLOR_LETTER = [0, 0, 0];
+COLOR_LOGO = [0, 170./255., 90./255.];
+
 // if you want to show only one side for debugging, use "l" or "r" or any other value
 ONLY = "l";
 
@@ -63,18 +67,23 @@ module window_wedge(is_left) {
             mirror_if_left(is_left)
                 difference() {
                     union() {
-                        cube([width, DEPTH1, HEIGHT]);
+                        color(COLOR_MAIN)
+                            cube([width, DEPTH1, HEIGHT]);
 
-                        logo(is_left);
+                        color(COLOR_LOGO)
+                            logo(is_left);
 
                         translate([WIDTH2, DEPTH1, HEIGHT - WEDGE_HEIGHT])
-                            prisma_trapez(WEDGE_WIDTH_SLOPE1, WEDGE_WIDTH_SLOPE2, WEDGE_WIDTH, WEDGE_DEPTH, WEDGE_HEIGHT);
+                            color(COLOR_MAIN)
+                                prisma_trapez(WEDGE_WIDTH_SLOPE1, WEDGE_WIDTH_SLOPE2, WEDGE_WIDTH, WEDGE_DEPTH, WEDGE_HEIGHT);
                     }
 
-                    letter(is_left);
+                    color(COLOR_LETTER)
+                        letter(is_left);
 
                     translate([0., DEPTH1 + WEDGE_DEPTH - SHACKLE_GAP - SHACKLE_DEPTH, HEIGHT - WEDGE_HEIGHT - SHACKLE_HEIGHT])
-                        cube([width, SHACKLE_GAP, 2 * SHACKLE_HEIGHT]);
+                        color(COLOR_MAIN)
+                            cube([width, SHACKLE_GAP, 2 * SHACKLE_HEIGHT]);
                 }
 }
 
