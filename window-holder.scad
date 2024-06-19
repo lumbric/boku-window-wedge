@@ -27,11 +27,11 @@ ONLY = "r";
 //// Values for left!
 //// few from top, where the letters L/R are:
 //// width is in the writing direction of letters L/R
-//WIDTH1 = 16;                  // distance from left edge to wedge
+//WIDTH1 = 17.5;                  // distance from left edge to wedge
 //WIDTH2 = 12;                    // distance from wedge to right edge
-//WEDGE_WIDTH = 23.0;             // width of top of wedge
-//WEDGE_WIDTH_SLOPE1 = 1;       // left width of slope
-//WEDGE_WIDTH_SLOPE2 = 1;       // right width of slope
+//WEDGE_WIDTH = 21.8;             // width of top of wedge
+//WEDGE_WIDTH_SLOPE1 = 0.3;       // left width of slope
+//WEDGE_WIDTH_SLOPE2 = 0.3;       // right width of slope
 //
 //// if you want to show only one side for debugging, use "l" or "r" or any other value
 //ONLY = "l";
