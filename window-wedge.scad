@@ -1,5 +1,5 @@
 /*
- * Window holder
+ * BOKU Window Wedge
  *
  * This is a wedge to keep the BOKU windows in the Guttenberghaus open. It is very likely that it
  * fits well also for other windows.
@@ -49,14 +49,14 @@ width = WIDTH1 + WEDGE_WIDTH_SLOPE1 + WEDGE_WIDTH + WEDGE_WIDTH_SLOPE2 + WIDTH2;
 
 
 if (ONLY != "r")
-    window_holder(is_left=true);
+    window_wedge(is_left=true);
 
 if (ONLY != "l")
-    window_holder(is_left=false);
+    window_wedge(is_left=false);
 
 
 
-module window_holder(is_left) {
+module window_wedge(is_left) {
     sign = is_left ? -1: 1;
     translate([width/2., sign * DISTANCE, HEIGHT])
         rotate([180, 0, 180])
