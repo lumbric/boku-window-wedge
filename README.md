@@ -7,6 +7,6 @@ designed to keep the windows open.
 ![Window Wedge Screenshot](screenshot.png)
 
 
-![Window Wedge photo 1](photo1.png)
+![Window Wedge photo 1](photo1.jpg)
 
-![Window Wedge photo 2](photo2.png)
+![Window Wedge photo 2](photo2.jpg)
