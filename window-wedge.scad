@@ -32,7 +32,7 @@ SHACKLE_DEPTH = 6;
 SHACKLE_GAP = 18;
 SHACKLE_HEIGHT = 15;
 
-TEXT_DEPTH = 3;
+TEXT_DEPTH = 1.;
 FONT_SIZE = 10;
 
 // distance between the two parts for printing at the same time
