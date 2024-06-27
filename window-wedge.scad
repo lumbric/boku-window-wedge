@@ -116,7 +116,8 @@ module logo(is_left) {
         translate([sign*(width/2) - LOGO_WIDTH/2., -0.1, HEIGHT/2-LOGO_HEIGHT/2.])
             rotate([90, 0, 0])
                 linear_extrude(TEXT_DEPTH)
-                    import(file = "window-wegde-boku-logo.svg", center = false, dpi = 96);
+                    offset(delta=0.001)
+                        import(file = "window-wegde-boku-logo.svg", center = false, dpi = 96);
 }
 
 
